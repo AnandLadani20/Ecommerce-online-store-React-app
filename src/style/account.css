@@ -1,0 +1,90 @@
+/* Account Css */
+:root {
+    --star-color: rgba(0, 0, 0, 0.16);
+    --star-background: #6a6a6d;
+    --blue-bg:#0088cc ;
+    --lightgray-text:#777777;
+    --dark-btn:#222529;
+    --gray-border:#e7e7e7;
+    --dark-heading:#222529;
+  }
+
+
+.account-main-content {
+    padding: 40px 0px;
+}
+.account-nav-title>h5 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+.account-navigations-wrap>ul>li {
+    width: 100%;
+    cursor: pointer;
+}
+.account-navigations-wrap>ul>li:last-child .acc-nav-items{
+    border-bottom: 0;
+}
+.account-navigations-wrap>ul>li .acc-nav-items{
+   font-size: 14px;
+   font-weight: 500;
+   padding: 10px 0px;
+   color: var(--lightgray-text);
+   display: block;
+   border-bottom: 1px solid var(--gray-border);
+}
+
+.account-navigations-wrap>ul>li .acc-nav-items.active{
+    color: var(--dark-heading);
+    font-weight: 700;
+}
+.account-navigations-wrap>ul>li .acc-nav-items.deactive{
+    color: var(--lightgray-text) !important;
+    font-weight: 500 !important;
+}
+/* AccountDashbord css */
+.accnt-dashboard-wrap {
+    display: block;
+    position: relative;
+}
+.accnt-dashboard-wrap h6{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+.accnt-dashboard-wrap h6 span{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--lightgray-text) !important;
+}
+.accnt-dashboard-wrap p{
+    color: var(--lightgray-text);
+    font-size: 14px;
+    line-height: 1.8;
+}
+.accnt-menu-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--gray-border);
+    margin: 10px 0px;
+    padding: 30px;
+}
+.accnt-menu-box svg{
+    height: 60px;
+    width: 60px;
+    color: #d3d3d4;
+    transition: transform 0.3s;
+}
+.accnt-menu-box:hover svg {
+    transform: scale(1.1);
+}
+.accnt-menu-box p{
+    margin-bottom: 0 !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--dark-heading) !important;
+}

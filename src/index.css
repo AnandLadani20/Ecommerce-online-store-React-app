@@ -1,0 +1,358 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+  font-family: Poppins, sans-serif !important;
+}
+
+:root {
+  --star-color: rgba(0, 0, 0, 0.16);
+  --star-background: #6a6a6d;
+  --blue-bg:#0088cc ;
+  --lightgray-text:#777777;
+  --dark-btn:#222529;
+  --gray-border:#e7e7e7;
+  --dark-heading:#222529;
+}
+
+
+a {
+  outline: none;
+  text-decoration: none !important;
+}
+
+ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul li {
+  list-style: none;
+}
+
+.center-align {
+  align-items: center !important;
+}
+
+.dropdown,
+.dropleft,
+.dropright,
+.dropup {
+  position: relative;
+  list-style: none;
+}
+
+input:focus-visible {
+  outline: none !important;
+}
+
+.account-login-container{
+  padding: 40px 0px ;
+}
+
+
+/* login  form css start */
+.main-login-form-wapper .login-form-box {
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-form-title {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group label {
+  font-size: 15px;
+  color: #777;
+  font-weight: 600;
+  font-family: Poppins, sans-serif;
+}
+
+.login-form-title h2 {
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.26px;
+  margin: 0;
+}
+
+.main-login-form-wapper .form-group {
+  position: relative;
+}
+
+.main-login-form-wapper .form-group input {
+  border-radius: 4px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px;
+  height: 48px;
+  padding: 0 16px;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.porto-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.porto-control-input {
+   height: 18px;
+   width: 18px;
+}
+
+.porto-control-label {
+  font-size: 12px;
+  color: #777777;
+  margin-bottom: 3px;
+  font-family: Poppins, sans-serif;
+}
+
+.text-v-dark {
+  font-weight: 600;
+  font-size: 14px;
+  color: black;
+}
+
+.main-login-form-wapper button {
+  margin: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  background: transparent;
+  text-align: center;
+}
+
+.main-login-form-wapper p a {
+  font-weight: 700;
+}
+
+.login-btn-w button {
+  border-radius: 4px;
+  height: 48px;
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  border: 0;
+  background: #222529;
+  color: #fff;
+  padding: 2px 27px;
+}
+
+.main-register-account-wrapper {
+  padding: 20px 60px;
+  height: 100%;
+}
+
+.register-form-title h2 {
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.26px;
+  margin-bottom: 24px;
+}
+
+.register-form-content>p {
+  font-size: 16px;
+  color: #777777;
+  margin-bottom: 10px;
+  font-family: Poppins, sans-serif;
+}
+
+.register-form-content ul li {
+  font-family: Poppins, sans-serif;
+  list-style: initial;
+  font-size: 16px;
+  color: #777;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+.register-form-btn {
+  margin-top: 30px;
+
+}
+
+.register-form-btn>button {
+  border-radius: 4px;
+  height: 48px;
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  border: 0;
+  background: #222529;
+  color: #fff;
+  padding: 2px 27px
+}
+
+/* login form css end */
+
+@media screen and (min-width:768px) and (max-width:992px) {
+  .main-login-form-wapper .login-form-box {
+    padding: 0px 0px;
+  }
+  .main-register-account-wrapper{
+    padding: 0px 0px;
+  }
+}
+
+@media screen and  (max-width:768px) {
+  .main-login-form-wapper .login-form-box {
+    padding: 20px 0px;
+  }
+  .main-register-account-wrapper{
+    padding: 20px 0px;
+  }
+}
+
+/* signin form css start */
+.signin-form-main {
+  padding: 40px 0px;
+}
+.personal-info-title h4,
+.login-info-title h4 {
+  font-size: 22px;
+  line-height: 30px;
+  font-family: Poppins, sans-serif;
+  position: relative;
+  padding: 10px 0px;
+}
+.personal-info-title h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #d6d6d6;
+}
+.login-info-title h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #d6d6d6;
+}
+.personal-info-title p {
+  font-size: 14px;
+  color: #777777;
+  margin-bottom: 10px;
+  font-family: Poppins, sans-serif;
+}
+.signin-form-main .form-group {
+  position: relative;
+}
+
+.signin-form-main .form-group input,
+.checkout-biling-details .form-group input {
+  border-radius: 4px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px;
+  height: 48px;
+  padding: 0 16px;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+.checkout-biling-details .form-group textarea {
+  border-radius: 4px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  padding: 0 16px;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+.signin-form-main .form-group select,
+.checkout-biling-details .form-group select {
+  border-radius: 4px;
+  padding: 0 16px;
+  width: 100%;
+  border: 1px solid #ddd;
+  line-height: 48px;
+  height: 48px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.signin-form-main .form-group select option,
+.checkout-biling-details .form-group select option{
+  font-size: 16px;
+  font-style: normal;
+  border-radius: 0 !important;
+  font-weight: 500;
+  padding: 10px 0px !important;
+}
+
+.main-signin-form-btn button {
+  border-radius: 4px;
+  height: 48px;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  border: 0;
+  background: #222529;
+  color: #fff;
+  padding: 2px 27px
+}
+.form-error-style {
+  font-size: 14px;
+  color: #f14d54;
+  font-family: Poppins, sans-serif;
+
+}
+
+
+
+
+
+/* Lorder */
+
+.loader-wrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  inset: 0;
+  z-index: 1300;
+  background-color: #ffffff80;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-open .loader-wrapper {
+  display: flex;
+}
+
+.loader {
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#0088cc 94%,#0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%,#0088cc);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+  animation: l13 1s infinite linear;
+}
+@keyframes l13{ 
+  100%{transform: rotate(1turn)}
+}
