@@ -159,6 +159,7 @@
 
 .filter-title-common-box>p {
     margin-bottom: 0;
+    cursor: pointer;
 }
 
 .filter-title-common-box>h6 {
@@ -623,6 +624,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .categories-pagination-box>ul>li:hover {

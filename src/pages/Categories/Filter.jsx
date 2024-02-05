@@ -14,8 +14,13 @@ import { useFilterContext } from "../../context/filter";
 let MINPR = 5;
 let MAXPR = 1000;
 const Filter = () => {
-  const { setPrice, handlePriceFilter, setColorValue, handleColorFilter } =
-    useFilterContext();
+  const {
+    setPrice,
+    handlePriceFilter,
+    setColorValue,
+    handleColorFilter,
+    resetFilterState,
+  } = useFilterContext();
   const [priceValues, setPriceValues] = useState([MINPR, MAXPR]);
   const [selectedColor, setSelectedColor] = useState([]);
   const [selectedSize, setSelectedSize] = useState([]);
@@ -37,7 +42,7 @@ const Filter = () => {
     // console.log("useEffect render")
   }, []);
 
-  const colorOptions = ["#000000", "#0088cc", "#ab6e6e", "#fff", "#777"];
+  const colorOptions = ["#000000", "#0088cc", "#ab6e6e", "#4e5b7b", "#777"];
   const sizeOptions = ["XL", "L", "M", "S"];
 
   const handleSelectColor = (color) => {
@@ -72,11 +77,7 @@ const Filter = () => {
     // console.log("handleSelectSizes render")
   };
 
-  useEffect(() => {
-    setPrice([]);
-    setColorValue(null);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
 
   useEffect(() => {
     if (selectedColor.length > 0) {
@@ -84,8 +85,17 @@ const Filter = () => {
     } else {
       handleColorFilter(null);
     }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedColor]);
+
+  // clear Filter Data
+  useEffect(() => {
+    setSelectedColor([]);
+    setPriceValues([MINPR, MAXPR]);
+    setPrice([]);
+    setColorValue(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resetFilterState]);
 
   console.log("filterPage");
 
@@ -108,29 +118,103 @@ const Filter = () => {
           <ul className="collapse show" id="collapseCategories">
             <li className="filter-title-common-list">
               <NavLink to={`/shop/products/category/men's clothing`}>
-                Men (5)
+                Men (4)
               </NavLink>
               <p
                 data-target="#collapseAccessories"
                 data-toggle="collapse"
                 aria-expanded="false"
                 aria-controls="collapseAccessories"
+                style={{ visibility: "hidden" }}
               >
                 <i className="fa-solid fa-angle-down"></i>
               </p>
             </li>
-            <ul className="collapse" id="collapseAccessories">
+            <li className="filter-title-common-list">
+              <NavLink to={`/shop/products/category/women's clothing`}>
+                Women (6)
+              </NavLink>
+              <p
+                data-target="#collapseClothing"
+                data-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseClothing"
+                style={{ visibility: "hidden" }}
+              >
+                <i className="fa-solid fa-angle-down"></i>
+              </p>
+            </li>
+
+            <li className="filter-title-common-list">
+              <NavLink to={`/shop/products/category/electronics`}>
+                Electronics (6)
+              </NavLink>
+              <p
+                data-target="#collapseElectronics"
+                data-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseElectronics"
+                style={{ visibility: "hidden" }}
+              >
+                <i className="fa-solid fa-angle-down"></i>
+              </p>
+            </li>
+
+            <li className="filter-title-common-list">
+              <NavLink to={`/shop/products/category/jewelery`}>
+                Jewelery (4)
+              </NavLink>
+              <p
+                data-target="#collapseFashion"
+                data-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseFashion"
+                style={{ visibility: "hidden" }}
+              >
+                <i className="fa-solid fa-angle-down"></i>
+              </p>
+            </li>
+
+            <li className="filter-title-common-list">
+              <NavLink>Accessories (8)</NavLink>
+              <p
+                data-target="#collapseAccess"
+                data-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseAccess"
+              >
+                <i className="fa-solid fa-angle-down"></i>
+              </p>
+            </li>
+            <ul className="collapse" id="collapseAccess">
               <li className="filter-title-common-childlist">
-                <NavLink>Caps (3)</NavLink>
+                <NavLink>Shoes (2)</NavLink>
               </li>
               <li className="filter-title-common-childlist">
-                <NavLink>Watches (4)</NavLink>
+                <NavLink>T-Shirts (4)</NavLink>
               </li>
             </ul>
             <li className="filter-title-common-list">
-              <NavLink to={`/shop/products/category/women's clothing`}>
-                Women (7)
-              </NavLink>
+              <NavLink>Music (2)</NavLink>
+              <p
+                data-target="#collapseMusic"
+                data-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseMusic"
+              >
+                <i className="fa-solid fa-angle-down"></i>
+              </p>
+            </li>
+            <ul className="collapse" id="collapseMusic">
+              <li className="filter-title-common-childlist">
+                <NavLink>Headphone (1)</NavLink>
+              </li>
+              <li className="filter-title-common-childlist">
+                <NavLink>Toys (2)</NavLink>
+              </li>
+            </ul>
+            <li className="filter-title-common-list">
+              <NavLink>Clothing (6)</NavLink>
               <p
                 data-target="#collapseClothing"
                 data-toggle="collapse"
@@ -145,84 +229,6 @@ const Filter = () => {
                 <NavLink>Hoodies (2)</NavLink>
               </li>
             </ul>
-            <li className="filter-title-common-list">
-              <NavLink to={`/shop/products/category/electronics`}>
-                Electronics (3)
-              </NavLink>
-              <p
-                data-target="#collapseElectronics"
-                data-toggle="collapse"
-                aria-expanded="false"
-                aria-controls="collapseElectronics"
-              >
-                <i className="fa-solid fa-angle-down"></i>
-              </p>
-            </li>
-            <ul className="collapse" id="collapseElectronics">
-              <li className="filter-title-common-childlist">
-                <NavLink>Headphone (1)</NavLink>
-              </li>
-              <li className="filter-title-common-childlist">
-                <NavLink>Toys (2)</NavLink>
-              </li>
-            </ul>
-            <li className="filter-title-common-list">
-              <NavLink to={`/shop/products/category/jewelery`}>
-                Jewelery (7)
-              </NavLink>
-              <p
-                data-target="#collapseFashion"
-                data-toggle="collapse"
-                aria-expanded="false"
-                aria-controls="collapseFashion"
-              >
-                <i className="fa-solid fa-angle-down"></i>
-              </p>
-            </li>
-            <ul className="collapse" id="collapseFashion">
-              <li className="filter-title-common-childlist">
-                <NavLink>Shoes (2)</NavLink>
-              </li>
-              <li className="filter-title-common-childlist">
-                <NavLink>T-Shirts (4)</NavLink>
-              </li>
-            </ul>
-            <li className="filter-title-common-list">
-              <NavLink>Accessories (8)</NavLink>
-              <p
-                data-target="#collapseFashion"
-                data-toggle="collapse"
-                aria-expanded="false"
-                aria-controls="collapseFashion"
-                style={{ visibility: "hidden" }}
-              >
-                <i className="fa-solid fa-angle-down"></i>
-              </p>
-            </li>
-            <li className="filter-title-common-list">
-              <NavLink>Music (2)</NavLink>
-              <p
-                data-target="#collapseFashion"
-                data-toggle="collapse"
-                aria-expanded="false"
-                aria-controls="collapseFashion"
-                style={{ visibility: "hidden" }}
-              >
-                <i className="fa-solid fa-angle-down"></i>
-              </p>
-            </li>
-            <li className="filter-title-common-list">
-              <NavLink>Clothing (6)</NavLink>
-              <p
-                data-target="#collapseFashion"
-                data-toggle="collapse"
-                aria-expanded="false"
-                aria-controls="collapseFashion"
-                style={{ visibility: "hidden" }}
-              >
-                <i className="fa-solid fa-angle-down"></i>
-              </p>
-            </li>
           </ul>
         </div>
       </aside>

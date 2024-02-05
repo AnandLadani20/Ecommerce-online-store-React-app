@@ -463,6 +463,7 @@
     color: #ffffff;
     border-color: rgba(0, 153, 230, 1);
     opacity: 1;
+    cursor: pointer;
 }
 
 .page-wrapper .feauture-gb-bottom {
@@ -494,6 +495,7 @@
     background-color: rgba(0, 136, 204, 1);
     color: #ffffff;
     border-color: rgba(0, 136, 204, 1);
+    cursor: pointer;
 }
 
 .page-wrapper .porto-gb-icon-bottom {
@@ -520,6 +522,7 @@
     color: #ffffff;
     border-color: rgba(0, 136, 204, 1);
     z-index: 11111;
+    cursor: pointer;
 }
 
 .page-wrapper .porto-gb-icon-top {

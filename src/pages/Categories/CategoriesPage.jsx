@@ -17,7 +17,9 @@ const CategoriesPage = ({ productListView }) => {
 
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
+  console.log("filterProd", filteredProductDatas);
   const records = filteredProductDatas.slice(firstIndex, lastIndex);
+  console.log("records", records, filteredProductDatas);
   const nPages = Math.ceil(filteredProductDatas.length / recordsPerPage);
   const numbers = [...Array(nPages + 1).keys()].slice(1);
 
@@ -185,7 +187,7 @@ const GridView = ({ prdctArr1, addToWishlist, addToCart }) => (
                       prdctArr1.id
                     }`}
                   >
-                    {prdctArr1.title.slice(0, 36)}
+                    {prdctArr1.title.slice(0, 30)}
                   </Link>
                 </h3>
                 <Link

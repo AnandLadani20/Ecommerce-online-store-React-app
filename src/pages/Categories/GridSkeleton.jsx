@@ -14,9 +14,10 @@ const ProductSkeleton = () => {
                   <Link>
                     <figure className="swap-on-hover">
                       <img
+                        src="ss"
                         className="swap-on-hover__front-image"
                         loading="lazy"
-                        alt="swap"
+                        alt=""
                       />
                     </figure>
                   </Link>

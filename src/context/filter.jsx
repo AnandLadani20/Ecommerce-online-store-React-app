@@ -16,6 +16,7 @@ const FilterWrapper = ({ children }) => {
   const [filteredProductDatas, setFilteredProductDatas] = useState([]);
   const [price, setPrice] = useState([]);
   const [colorValue, setColorValue] = useState(null);
+  const [resetFilterState, setResetFilterState] = useState(false);
   // const [loading, setLoading] = useState(true)
 
   const fetchAllProduct = useCallback(
@@ -33,34 +34,38 @@ const FilterWrapper = ({ children }) => {
     [setOriginalProductDatas]
   );
 
-
   const handlePriceFilter = useCallback(
     (priceValues) => {
       setPrice(priceValues);
       applyFilters(priceValues, colorValue);
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[setPrice]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [setPrice]
+  );
 
   const handleColorFilter = useCallback(
     (color) => {
       setColorValue(color);
       applyFilters(price, color);
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[setColorValue]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [setColorValue]
+  );
 
   useEffect(() => {
     console.log(price, colorValue);
     if (price.length === 0 && !colorValue) {
       setFilteredProductDatas(originalProductDatas);
+      console.log("original", originalProductDatas);
     } else {
       applyFilters(price, colorValue);
     }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [price, colorValue]);
   // originalProductDatas
 
   const applyFilters = (priceValues, color) => {
-    const colors = ["#000000", "#0088cc", "#ab6e6e", "#fff", "#777"];
+    const colors = ["#000000", "#0088cc", "#ab6e6e", "#4e5b7b", "#777"];
     const filterData = [...originalProductDatas];
     const filteredData = filterData
       .map((product, index) => {
@@ -81,6 +86,9 @@ const FilterWrapper = ({ children }) => {
     setFilteredProductDatas(filteredData);
   };
 
+  const clearFilter = () => {
+    setResetFilterState(!resetFilterState);
+  };
 
   return (
     <>
@@ -94,6 +102,9 @@ const FilterWrapper = ({ children }) => {
           handlePriceFilter,
           handleColorFilter,
           setColorValue,
+          clearFilter,
+          resetFilterState,
+          setResetFilterState,
         }}
       >
         {children}

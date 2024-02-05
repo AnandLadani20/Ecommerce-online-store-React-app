@@ -9,6 +9,7 @@ import CategoriesPage from "./CategoriesPage";
 import { ReactComponent as ListView } from "../../files/svg/listView.svg";
 import { ReactComponent as GridView } from "../../files/svg/gridView.svg";
 import { ReactComponent as HomeIcon } from "../../files/svg/homeIcon.svg";
+import { useFilterContext } from "../../context/filter";
 
 const Shop = () => {
   const [productListView, setProductListView] = useState(false);
@@ -16,6 +17,8 @@ const Shop = () => {
   const [showSideBar, setShowSideBar] = useState(false);
 
   const { categoryName } = useParams();
+
+  const { clearFilter } = useFilterContext();
 
   const onChangeSort = (e) => {
     e.preventDefault();
@@ -25,6 +28,10 @@ const Shop = () => {
   const handleFilterSideBar = () => {
     setShowSideBar((prev) => !prev);
   };
+
+  const handleClearFilter = () => {
+    clearFilter();
+  }
 
   useEffect(() => {
     document.title = "Categories - My Ecommerece App";
@@ -153,7 +160,7 @@ const Shop = () => {
                     </ul>
                   </div>
                   <div className="categories-filter-right-box">
-                    <Link>Clear All</Link>
+                    <Link to="#" onClick={handleClearFilter}>Clear All</Link> 
                   </div>
                 </div>
 
