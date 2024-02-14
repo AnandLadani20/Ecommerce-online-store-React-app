@@ -17,7 +17,6 @@ const FilterWrapper = ({ children }) => {
   const [price, setPrice] = useState([]);
   const [colorValue, setColorValue] = useState(null);
   const [resetFilterState, setResetFilterState] = useState(false);
-  // const [loading, setLoading] = useState(true)
 
   const fetchAllProduct = useCallback(
     async (categoryName) => {
@@ -34,22 +33,26 @@ const FilterWrapper = ({ children }) => {
     [setOriginalProductDatas]
   );
 
-  const handlePriceFilter = useCallback(
-    (priceValues) => {
-      setPrice(priceValues);
-      applyFilters(priceValues, colorValue);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    },
-    [setPrice]
-  );
+  const applyFilters = useCallback(
+    (priceValues, color) => {
+      const colors = ["#000000", "#0088cc", "#ab6e6e", "#4e5b7b", "#777"];
+      const filterData = [...originalProductDatas];
+      const filteredData = filterData
+        .map((product, index) => ({
+          ...product,
+          color: colors[index % colors.length],
+        }))
+        .filter((curElem) => {
+          const priceInRange =
+            (!priceValues[0] || curElem.price >= priceValues[0]) &&
+            (!priceValues[1] || curElem.price <= priceValues[1]);
 
-  const handleColorFilter = useCallback(
-    (color) => {
-      setColorValue(color);
-      applyFilters(price, color);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+          const colorMatch = !color || color.includes(curElem.color);
+          return priceInRange && colorMatch;
+        });
+      setFilteredProductDatas(filteredData);
     },
-    [setColorValue]
+    [originalProductDatas]
   );
 
   useEffect(() => {
@@ -60,35 +63,27 @@ const FilterWrapper = ({ children }) => {
     } else {
       applyFilters(price, colorValue);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [price, colorValue]);
-  // originalProductDatas
+  }, [price, colorValue, originalProductDatas, applyFilters]);
 
-  const applyFilters = (priceValues, color) => {
-    const colors = ["#000000", "#0088cc", "#ab6e6e", "#4e5b7b", "#777"];
-    const filterData = [...originalProductDatas];
-    const filteredData = filterData
-      .map((product, index) => {
-        const productWithColor = {
-          ...product,
-          color: colors[index % colors.length],
-        };
-        return productWithColor;
-      })
-      .filter((curElem) => {
-        const priceInRange =
-          (!priceValues[0] || curElem.price >= priceValues[0]) &&
-          (!priceValues[1] || curElem.price <= priceValues[1]);
+  const handlePriceFilter = useCallback(
+    (priceValues) => {
+      setPrice(priceValues);
+      applyFilters(priceValues, colorValue);
+    },
+    [setPrice, applyFilters, colorValue]
+  );
 
-        const colorMatch = !color || color.includes(curElem.color);
-        return priceInRange && colorMatch;
-      });
-    setFilteredProductDatas(filteredData);
-  };
+  const handleColorFilter = useCallback(
+    (color) => {
+      setColorValue(color);
+      applyFilters(price, color);
+    },
+    [setColorValue, applyFilters, price]
+  );
 
-  const clearFilter = () => {
-    setResetFilterState(!resetFilterState);
-  };
+  const clearFilter = useCallback(() => {
+    setResetFilterState((prevState) => !prevState);
+  }, [setResetFilterState]);
 
   return (
     <>
